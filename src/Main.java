@@ -10,6 +10,11 @@ public class Main {
         IssueService issueService = new IssueService();
         ActionHistoryService actionService = new ActionHistoryService();
 
+        studentService.initializeStudents();
+        appointmentService.initializeAppointments();
+        issueService.initializeIssues();
+        actionService.initializeActions();
+
         Scanner scanner = new Scanner(System.in);
         int choice;
 
@@ -29,21 +34,33 @@ public class Main {
             switch (choice) {
                 case 1:
                     // TODO
+                    studentService.printStudents();
+                    actionService.addRequestedTranscript();
                     break;
                 case 2:
                     // TODO
+                    appointmentService.printAppointments();
                     break;
                 case 3:
                     // TODO
+                    issueService.showMostUrgent();
+                    issueService.printRemainingIssues();
                     break;
                 case 4:
                     // TODO
+                    actionService.printHistory();
                     break;
                 case 5:
                     // TODO
+                    System.out.println("Print a problem");
+                    String description = scanner.nextLine();
+                    System.out.println("Print a urgency");
+                    int urgency = scanner.nextInt();
+                    issueService.addNewIssue(description, urgency);
                     break;
                 case 6:
                     // TODO
+                    actionService.undoLastAction();
                     break;
                 case 7:
                     System.out.println("Exiting... 👋");
