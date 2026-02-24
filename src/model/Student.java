@@ -1,16 +1,31 @@
 package model;
 
-public class Student {
-
-    // TODO: declare fields
+public class Student{
     private int id;
     private String name;
     private double gpa;
 
-    // TODO: create constructor
+    public Student(String name, int id, double gpa) {
+        this.name = name;
+        this.id = id;
+        this.gpa = gpa;
+    }
 
-    // TODO: create getters
+    public String getName() {
+        return name;
+    }
 
-    // TODO: override toString()
+    public int getId() {
+        return id;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public String toString() {
+        return "name :"+getName() | "id :" +getId()| "gpa :" +getGpa()|
+    }
+}
 
 }
