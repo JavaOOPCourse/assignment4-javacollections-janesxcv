@@ -6,25 +6,47 @@ import java.util.Iterator;
 
 public class IssueService {
 
-    private PriorityQueue<Issue> issues = new PriorityQueue<>();
+    // Note: The Issue class must implement Comparable<Issue>
+    // or you must provide a Comparator here.
+    private PriorityQueue<Issue> issues = new PriorityQueue<>((a, b) -> Integer.compare(a.getUrgencyLevel(), b.getUrgencylevel()));
 
     public void initializeIssues() {
-        // TODO: Add at least 5 issues
+        issues.add(new Issue("problem 1", 1));
+        issues.add(new Issue("problem 2", 2));
+        issues.add(new Issue("problem 3", 3));
+        issues.add(new Issue("problem 4", 1));
+        issues.add(new Issue("problem 5", 2));
+        System.out.println("Issues were initialized.");
     }
 
     public void showMostUrgent() {
-        // TODO: Show most urgent issue
+        if (!issues.isEmpty()) {
+            System.out.println("Most Urgent Issue: " + issues.peek().getDescription());
+        } else {
+            System.out.println("No pending issues.");
+        }
     }
 
     public void resolveIssues() {
-        // TODO: Remove 2 issues
-    }
+        for (int d = 0; d < 2; d++) {
+            if (!issues.isEmpty()) {
+                Issue resolved = issues.poll();
+                System.out.println("Resolved: " + resolved.getDescription());
+            }
+        }
+    } // Fixed: Added missing closing brace for the method
 
     public void printRemainingIssues() {
-        // TODO: Print using iterator
+        // Using an Iterator as requested
+        Iterator<Issue> it = issues.iterator();
+        while (it.hasNext()) {
+            System.out.println("Remaining: " + it.next().getDescription());
+        }
     }
 
+    // Removed the extra semicolon after 'int urgency'
     public void addNewIssue(String description, int urgency) {
-        // TODO: Add new issue
+        issues.add(new Issue(description, urgency));
+        System.out.println("Added new issue: " + description);
     }
 }
