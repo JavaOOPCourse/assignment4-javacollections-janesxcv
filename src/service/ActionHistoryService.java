@@ -1,4 +1,11 @@
-    private ArrayDeque<String> actions = new ArrayDeque<>();
+
+package service;
+
+import java.util.ArrayDeque;
+import java.util.Iterator;
+
+public class ActionHistoryService {
+private ArrayDeque<String> actions = new ArrayDeque<>();
 
     public void initializeActions() {
         // TODO: Add 4 actions
