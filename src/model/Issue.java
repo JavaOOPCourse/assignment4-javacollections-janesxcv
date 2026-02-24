@@ -1,19 +1,27 @@
 package model;
 
-public class Issue implements Comparable<Issue> {
-
-    // TODO: declare fields
+public class Issue implements  Comparable<Issue> {
     private String description;
-    private int urgencyLevel; // 1 = most urgent
+    private int UrgencyLevel;
 
-    // TODO: create constructor
-
-    // TODO: implement compareTo()
-    @Override
-    public int compareTo(Issue other) {
-        // TODO: implement priority logic
-        return 0;
+    public Issue(String description, int UrgencyLevel) {
+        this.description = description;
+        this.UrgencyLevel = UrgencyLevel;
     }
 
-    // TODO: override toString()
+    public String getDescription() {
+        return description;
+    }
+
+    public int getUrgencyLevel() {
+        return UrgencyLevel;
+    }
+
+    public int compareTo (Issue other) {
+        return Integer.compare(this.UrgencyLevel, other.UrgencyLevel);
+    }
+
+    public String toString() {
+        return "[priority :"+UrgencyLevel+"]" +description;
+    }
 }
